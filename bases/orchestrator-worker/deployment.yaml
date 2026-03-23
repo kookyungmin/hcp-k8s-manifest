@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hcp-orchestrator-worker
+  namespace: hcp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hcp-orchestrator-worker
+  template:
+    metadata:
+      labels:
+        app: hcp-orchestrator-worker
+    spec:
+      containers:
+        - name: hcp-orchestrator-worker
+          image: hcp-orchestrator-worker:v1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+
+          envFrom:
+            - configMapRef:
+                name: hcp-orchestrator-worker-config
+            - secretRef:
+                name: hcp-orchestrator-worker-secret
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10

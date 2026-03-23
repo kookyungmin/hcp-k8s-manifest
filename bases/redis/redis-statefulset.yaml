@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hcp-redis
+  namespace: hcp
+spec:
+  serviceName: hcp-redis-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hcp-redis
+  template:
+    metadata:
+      labels:
+        app: hcp-redis
+    spec:
+      containers:
+        - name: hcp-redis
+          image: redis:7.2.5
+          ports:
+            - containerPort: 6379
+              name: redis
+          args:
+            - "redis-server"
+            - "--appendonly"
+            - "yes"
+          volumeMounts:
+            - name: redis-data
+              mountPath: /data
+          livenessProbe:
+            tcpSocket:
+              port: 6379
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: 6379
+            initialDelaySeconds: 5
+            periodSeconds: 10
+  volumeClaimTemplates:
+    - metadata:
+        name: redis-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi

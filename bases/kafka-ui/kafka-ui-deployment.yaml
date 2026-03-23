@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hcp-kafka-ui
+  namespace: hcp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hcp-kafka-ui
+  template:
+    metadata:
+      labels:
+        app: hcp-kafka-ui
+    spec:
+      containers:
+        - name: hcp-kafka-ui
+          image: tchiotludo/akhq:latest
+          ports:
+            - containerPort: 8080
+              name: http
+          volumeMounts:
+            - name: kafka-ui-config
+              mountPath: /app/application.yml
+              subPath: application.yml
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+      volumes:
+        - name: kafka-ui-config
+          configMap:
+            name: hcp-kafka-ui-config

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hcp-user-service-config
+  namespace: hcp
+data:
+  SPRING_PROFILES_ACTIVE: "dev"
+  SPRING_UR_SERVICE_URL: "http://hcp-user-service-svc:8080"
+  SPRING_UR_JDBC_URL: "jdbc:mysql://hcp-mysql-svc:3306/hcp_user?serverTimezone=UTC&characterEncoding=UTF-8"
+  SPRING_UR_DB_DRIVER: "com.mysql.cj.jdbc.Driver"
+  SPRING_UR_PORT: "8080"
+  SPRING_UR_REDIS_HOST: "hcp-redis-svc"
+  SPRING_UR_REDIS_PORT: "6379"

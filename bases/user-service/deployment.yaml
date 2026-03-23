@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hcp-user-service
+  namespace: hcp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hcp-user-service
+  template:
+    metadata:
+      labels:
+        app: hcp-user-service
+    spec:
+      containers:
+        - name: hcp-user-service
+          image: hcp-user-service:v1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+
+          envFrom:
+            - configMapRef:
+                name: hcp-user-service-config
+            - secretRef:
+                name: hcp-user-service-secret
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hcp-orchestrator-worker-config
+  namespace: hcp
+data:
+  SPRING_PROFILES_ACTIVE: "dev"
+  SPRING_WK_SERVICE_URL: "http://hcp-orchestrator-worker-svc:8080"
+  SPRING_WK_JDBC_URL: "jdbc:mysql://hcp-mysql-svc:3306/hcp_worker?serverTimezone=UTC&characterEncoding=UTF-8"
+  SPRING_WK_DB_DRIVER: "com.mysql.cj.jdbc.Driver"
+  SPRING_WK_PORT: "8080"
+
+  SPRING_WK_KAFKA_BOOTSTRAP_SERVERS: "hcp-kafka-svc:9092"
+  SPRING_WK_SERVICE_WS_URL: "ws://hcp-orchestrator-worker-svc:8080"
+  SPRING_WK_REDIS_HOST: "hcp-redis-svc"
+  SPRING_WK_REDIS_PORT: "6379"

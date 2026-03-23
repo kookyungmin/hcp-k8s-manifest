@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hcp-compute-service
+  namespace: hcp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hcp-compute-service
+  template:
+    metadata:
+      labels:
+        app: hcp-compute-service
+    spec:
+      containers:
+        - name: hcp-compute-service
+          image: hcp-compute-service:v1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+
+          envFrom:
+            - configMapRef:
+                name: hcp-compute-service-config
+            - secretRef:
+                name: hcp-compute-service-secret
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hcp-compute-service-config
+  namespace: hcp
+data:
+  SPRING_PROFILES_ACTIVE: "dev"
+  SPRING_CP_SERVICE_URL: "http://hcp-compute-service-svc:8080"
+  SPRING_CP_JDBC_URL: "jdbc:mysql://hcp-mysql-svc:3306/hcp_compute?serverTimezone=UTC&characterEncoding=UTF-8"
+  SPRING_CP_DB_DRIVER: "com.mysql.cj.jdbc.Driver"
+  SPRING_CP_PORT: "8080"
+  SPRING_CP_SERVICE_WS_URL: "ws://hcp-compute-service-svc:8080"
+  SPRING_CP_KAFKA_BOOTSTRAP_SERVERS: "hcp-kafka-svc:9092"

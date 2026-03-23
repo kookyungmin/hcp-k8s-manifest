@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hcp-kafka-ui-config
+  namespace: hcp
+data:
+  application.yml: |
+    akhq:
+      connections:
+        local:
+          properties:
+            bootstrap.servers: "hcp-kafka-svc:9092"

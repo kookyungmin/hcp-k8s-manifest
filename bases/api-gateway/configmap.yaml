@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hcp-api-gateway-config
+  namespace: hcp
+data:
+  SPRING_PROFILES_ACTIVE: "dev"
+  SPRING_API_GATEWAY_PORT: "80"
+  SPRING_API_GATEWAY_REDIS_HOST: "hcp-redis-svc"
+  SPRING_API_GATEWAY_REDIS_PORT: "6379"
+  SPRING_WK_SERVICE_URL: "http://hcp-orchestrator-worker-svc:8080"
+  SPRING_WK_SERVICE_WS_URL: "ws://hcp-orchestrator-worker-svc:8080"
+  SPRING_CP_SERVICE_URL: "http://hcp-compute-service-svc:8080"
+  SPRING_CP_SERVICE_WS_URL: "ws://hcp-compute-service-svc:8080"
+  SPRING_UR_SERVICE_URL: "http://hcp-user-service-svc:8080"
