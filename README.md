@@ -16,6 +16,7 @@ GitHub Actions
 3. manifest 저장소의 이미지 태그만 업데이트해서 commit
 
 Argo CD
+
 4. manifest 저장소 변화를 감지
 5. Kubernetes에 자동 sync 해서 배포
 
