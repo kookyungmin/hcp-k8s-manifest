@@ -11,3 +11,4 @@ data:
   SPRING_CP_PORT: "8080"
   SPRING_CP_SERVICE_WS_URL: "ws://hcp-compute-service-svc:8080"
   SPRING_CP_KAFKA_BOOTSTRAP_SERVERS: "hcp-kafka-svc:9092"
+  SPRING_WK_SERVICE_WS_URL: "ws://hcp-orchestrator-worker-svc:8080"

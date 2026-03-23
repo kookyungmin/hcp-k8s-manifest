@@ -13,6 +13,7 @@ spec:
       labels:
         app: hcp-orchestrator-worker
     spec:
+      serviceAccountName: hcp-orchestrator-worker
       containers:
         - name: hcp-orchestrator-worker
           image: hcp-orchestrator-worker:v1.0.0

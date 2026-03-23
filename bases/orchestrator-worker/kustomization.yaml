@@ -4,6 +4,9 @@ kind: Kustomization
 resources:
   - configmap.yaml
   - secret.yaml
+  - serviceaccount.yaml
+  - clusterrole.yaml
+  - clusterrolebinding.yaml
   - deployment.yaml
   - service.yaml
 

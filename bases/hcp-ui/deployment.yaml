@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hcp-ui
+  namespace: hcp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hcp-ui
+  template:
+    metadata:
+      labels:
+        app: hcp-ui
+    spec:
+      containers:
+        - name: hcp-ui
+          image: hcp-ui:v1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 30
