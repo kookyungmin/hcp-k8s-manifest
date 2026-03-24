@@ -11,6 +11,8 @@
 
 ![img_1.png](img_1.png)
 
+![img_2.png](img_2.png)
+
 GitHub Actions
 
 1. Spring Boot 서비스별 이미지 빌드
@@ -134,6 +136,13 @@ kubectl -n argocd get secret argocd-initial-admin-secret \
 
 ```
 $ kubectl apply -f overlays/dev/user-service/argocd-app.yaml
+```
+
+* argo rollout install
+
+```
+$ kubectl create namespace argo-rollouts
+$ kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
 ```
 
 

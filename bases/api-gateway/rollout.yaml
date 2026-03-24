@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: hcp-api-gateway
+  namespace: hcp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hcp-api-gateway
+  template:
+    metadata:
+      labels:
+        app: hcp-api-gateway
+    spec:
+      containers:
+        - name: hcp-api-gateway
+          image: rudals4549/hcp-api-gateway:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+
+          envFrom:
+            - configMapRef:
+                name: hcp-api-gateway-config
+            - secretRef:
+                name: hcp-api-gateway-secret
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 80
+            initialDelaySeconds: 20
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+  strategy:
+    blueGreen:
+      activeService: hcp-api-gateway-svc
+      previewService: hcp-api-gateway-preview-svc
+      autoPromotionEnabled: false
+      previewReplicaCount: 1
+      scaleDownDelaySeconds: 30

@@ -4,7 +4,8 @@ kind: Kustomization
 resources:
   - configmap.yaml
 #  - secret.yaml
-  - deployment.yaml
-  - service.yaml
+  - rollout.yaml
+  - active-service.yaml
+  - preview-service.yaml
 #  - ingress.yaml
 
