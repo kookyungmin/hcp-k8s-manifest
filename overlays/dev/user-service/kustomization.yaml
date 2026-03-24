@@ -6,4 +6,4 @@ resources:
 
 images:
   - name: rudals4549/user-service
-    newTag: latest
+    newTag: 336ddd3
