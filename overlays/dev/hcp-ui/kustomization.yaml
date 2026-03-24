@@ -6,4 +6,4 @@ resources:
 
 images:
   - name: rudals4549/hcp-ui
-    newTag: latest
+    newTag: ecb4788
