@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/kookyungmin/hcp-k8s-manifest.git
     targetRevision: main
-    path: overlays/user-service/dev
+    path: overlays/dev/user-service
   destination:
     server: https://kubernetes.default.svc
     namespace: hcp
