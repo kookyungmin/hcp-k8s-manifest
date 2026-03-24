@@ -9,6 +9,8 @@
 
 ![img.png](img.png)
 
+![img_1.png](img_1.png)
+
 GitHub Actions
 
 1. Spring Boot 서비스별 이미지 빌드
@@ -114,7 +116,25 @@ $ kubectl apply -k bases/kafka-ui
 $ minikube service -n hcp hcp-kafka-ui-svc
 ```
 
+### ArgoCd install
 
+```
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+
+* 초기 비밀번호 확인 (아이디는 admin)
+
+```
+kubectl -n argocd get secret argocd-initial-admin-secret \
+  -o jsonpath="{.data.password}" | base64 -d && echo
+```
+
+* 서비스 별 Application 등록
+
+```
+$ kubectl apply -f overlays/dev/user-service/argocd-app.yaml
+```
 
 
 

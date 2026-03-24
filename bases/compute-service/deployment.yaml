@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: hcp-compute-service
-          image: hcp-compute-service:v1.0.0
+          image: rudals4549/hcp-compute-service:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

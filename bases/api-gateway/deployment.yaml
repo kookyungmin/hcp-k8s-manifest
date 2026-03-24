@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: hcp-api-gateway
-          image: hcp-api-gateway:v1.0.0
+          image: rudals4549/hcp-api-gateway:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

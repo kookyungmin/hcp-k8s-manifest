@@ -16,7 +16,7 @@ spec:
       serviceAccountName: hcp-orchestrator-worker
       containers:
         - name: hcp-orchestrator-worker
-          image: hcp-orchestrator-worker:v1.0.0
+          image: rudals4549/hcp-orchestrator-worker:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
