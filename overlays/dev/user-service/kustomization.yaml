@@ -5,5 +5,5 @@ resources:
   - ../../../bases/user-service
 
 images:
-  - name: rudals4549/user-service
+  - name: rudals4549/hcp-user-service
     newTag: 336ddd3

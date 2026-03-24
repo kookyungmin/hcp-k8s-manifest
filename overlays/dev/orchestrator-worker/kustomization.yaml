@@ -5,5 +5,5 @@ resources:
   - ../../../bases/orchestrator-worker
 
 images:
-  - name: rudals4549/orchestrator-worker
+  - name: rudals4549/hcp-orchestrator-worker
     newTag: latest

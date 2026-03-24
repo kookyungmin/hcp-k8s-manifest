@@ -5,5 +5,5 @@ resources:
   - ../../../bases/api-gateway
 
 images:
-  - name: rudals4549/api-gateway
+  - name: rudals4549/hcp-api-gateway
     newTag: latest

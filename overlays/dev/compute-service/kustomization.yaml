@@ -5,5 +5,5 @@ resources:
   - ../../../bases/compute-service
 
 images:
-  - name: rudals4549/compute-service
+  - name: rudals4549/hcp-compute-service
     newTag: latest
