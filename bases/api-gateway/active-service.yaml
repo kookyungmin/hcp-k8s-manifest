@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: hcp-api-gateway-svc
   namespace: hcp
+  labels:
+    app: hcp-api-gateway
 spec:
   selector:
     app: hcp-api-gateway

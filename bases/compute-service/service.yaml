@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: hcp-compute-service-svc
   namespace: hcp
+  labels:
+    app: hcp-compute-service
 spec:
   selector:
     app: hcp-compute-service

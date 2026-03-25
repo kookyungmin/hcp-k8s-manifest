@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: hcp-orchestrator-worker-svc
   namespace: hcp
+  labels:
+    app: hcp-orchestrator-worker
 spec:
   selector:
     app: hcp-orchestrator-worker
