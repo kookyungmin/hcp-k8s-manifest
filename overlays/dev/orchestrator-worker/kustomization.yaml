@@ -6,4 +6,4 @@ resources:
 
 images:
   - name: rudals4549/hcp-orchestrator-worker
-    newTag: 221efc6
+    newTag: dfc5585
