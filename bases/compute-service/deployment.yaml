@@ -25,6 +25,16 @@ spec:
                 name: hcp-compute-service-config
             - secretRef:
                 name: hcp-compute-service-secret
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "300m"
+              memory: "512Mi"
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: "-XX:MaxRAMPercentage=50 -XX:InitialRAMPercentage=20"
 
           readinessProbe:
             httpGet:

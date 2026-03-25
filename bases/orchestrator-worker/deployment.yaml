@@ -26,7 +26,16 @@ spec:
                 name: hcp-orchestrator-worker-config
             - secretRef:
                 name: hcp-orchestrator-worker-secret
-
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "300m"
+              memory: "512Mi"
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: "-XX:MaxRAMPercentage=50 -XX:InitialRAMPercentage=20"
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness

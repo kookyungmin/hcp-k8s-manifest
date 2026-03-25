@@ -25,7 +25,16 @@ spec:
                 name: hcp-api-gateway-config
             - secretRef:
                 name: hcp-api-gateway-secret
-
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "300m"
+              memory: "512Mi"
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: "-XX:MaxRAMPercentage=50 -XX:InitialRAMPercentage=20"
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
