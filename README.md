@@ -57,7 +57,7 @@ $ kubectl apply -k bases/kafka
 
 ```
 /opt/kafka/bin/kafka-topics.sh \
-  --bootstrap-server kafka:9092 \
+  --bootstrap-server localhost:9092 \
   --create \
   --if-not-exists \
   --topic hcp.compute.instance.provisioning \
@@ -65,7 +65,7 @@ $ kubectl apply -k bases/kafka
   --replication-factor 1;
   
 /opt/kafka/bin/kafka-topics.sh \
-  --bootstrap-server kafka:9092 \
+  --bootstrap-server localhost:9092 \
   --create \
   --if-not-exists \
   --topic hcp.compute.instance.provisioning.DLT \
@@ -73,7 +73,7 @@ $ kubectl apply -k bases/kafka
   --replication-factor 1;
   
 /opt/kafka/bin/kafka-topics.sh \
-  --bootstrap-server kafka:9092 \
+  --bootstrap-server localhost:9092 \
   --create \
   --if-not-exists \
   --topic hcp.compute.instance.status \
@@ -81,7 +81,7 @@ $ kubectl apply -k bases/kafka
   --replication-factor 1;
   
 /opt/kafka/bin/kafka-topics.sh \
-  --bootstrap-server kafka:9092 \
+  --bootstrap-server localhost:9092 \
   --create \
   --if-not-exists \
   --topic hcp.compute.instance.update.lifecycle \
@@ -89,7 +89,7 @@ $ kubectl apply -k bases/kafka
   --replication-factor 1;
   
 /opt/kafka/bin/kafka-topics.sh \
-  --bootstrap-server kafka:9092 \
+  --bootstrap-server localhost:9092 \
   --create \
   --if-not-exists \
   --topic hcp.compute.instance.scaling \
@@ -97,7 +97,7 @@ $ kubectl apply -k bases/kafka
   --replication-factor 1;
   
 /opt/kafka/bin/kafka-topics.sh \
-  --bootstrap-server kafka:9092 \
+  --bootstrap-server localhost:9092 \
   --create \
   --if-not-exists \
   --topic hcp.compute.instance.register.sshkey \
@@ -105,7 +105,7 @@ $ kubectl apply -k bases/kafka
   --replication-factor 1;
   
 /opt/kafka/bin/kafka-topics.sh \
-  --bootstrap-server kafka:9092 \
+  --bootstrap-server localhost:9092 \
   --create \
   --if-not-exists \
   --topic hcp.compute.instance.update.networkpolicy \
