@@ -6,4 +6,4 @@ resources:
 
 images:
   - name: rudals4549/hcp-user-service
-    newTag: 1e54c8d
+    newTag: 799a5ff
