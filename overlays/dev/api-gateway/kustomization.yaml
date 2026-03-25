@@ -6,4 +6,4 @@ resources:
 
 images:
   - name: rudals4549/hcp-api-gateway
-    newTag: 87dd943
+    newTag: 9b79ad6
