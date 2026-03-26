@@ -40,18 +40,18 @@ spec:
               path: /actuator/health/readiness
               port: 80
             initialDelaySeconds: 60
-            timeoutSeconds: 5
+            timeoutSeconds: 10
             periodSeconds: 15
-            failureThreshold: 5
+            failureThreshold: 10
 
           livenessProbe:
             httpGet:
               path: /actuator/health/liveness
               port: 80
             initialDelaySeconds: 60
-            timeoutSeconds: 5
+            timeoutSeconds: 10
             periodSeconds: 15
-            failureThreshold: 5
+            failureThreshold: 10
   strategy:
     blueGreen:
       activeService: hcp-api-gateway-svc
