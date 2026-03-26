@@ -6,4 +6,4 @@ resources:
 
 images:
   - name: rudals4549/hcp-compute-service
-    newTag: dfc5585
+    newTag: 33d4f52
